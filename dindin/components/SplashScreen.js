@@ -1,40 +1,93 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image, TouchableHighlight } from 'react-native';
-import { Constants } from 'expo'
+import { View, Text, StyleSheet, Dimensions, Image, TouchableHighlight } from 'react-native';
+import { Constants, ScreenOrientation } from 'expo'
 
 
 export default class SplashScreen extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            portrait: 1,
+        }
+    }
+
+    getOrientation() {
+        if (Dimensions.get('window').width < Dimensions.get('window').height) {
+            this.setState({ portrait: 1 });
+            console.log('portrait')
+        }
+        else {
+            this.setState({ portrait: 0 });
+            console.log('landscape')
+        }
+    }
+    componentDidMount() {
+        //ScreenOrientation.allowAsync(ScreenOrientation.Orientation.LANDSCAPE);
+        this.getOrientation();
+
+        Dimensions.addEventListener('change', () => {
+            this.getOrientation();
+        })
+    }
     
     render() {
-        return (
-            <View style={styles.container}>
-                <View style={styles.logoContainer}>
-                    <Image style={styles.logo}
-                        source={require('../assets/images/splash_icon.png')}
-                    />
+
+        if (this.state.portrait) {
+            return (
+                <View style={vert.container}>
+                    <View style={vert.logoContainer}>
+                        <Image style={vert.logo}
+                            source={require('../assets/images/splash_icon.png')}
+                        />
+                    </View>
+                    <View style={vert.titleContainer}>
+                        <Text style={vert.title}>DinDin</Text>
+                        <Text style={vert.subtitle}>connecting food lovers</Text>
+                    </View>
+                    <View style={vert.buttonContainer}>
+                        <TouchableHighlight
+                            style={vert.button}
+                            onPress={() => {console.log("pressed")}}
+                            >
+                            <Text style={vert.buttonText}> Get Started </Text>
+                        </TouchableHighlight>
+                    </View>
                 </View>
-                <View style={styles.titleContainer}>
-                    <Text style={styles.title}>DinDin</Text>
-                    <Text style={styles.subtitle}>connecting food lovers</Text>
+            );
+        }
+        else {
+            return (
+                <View style={horiz.container}>
+                    <View style={horiz.logoContainer}>
+                        <Image style={horiz.logo}
+                            source={require('../assets/images/splash_icon.png')}
+                        />
+                    </View>
+                    <View>
+                        <View style={horiz.titleContainer}>
+                            <Text style={horiz.title}>DinDin</Text>
+                            <Text style={horiz.subtitle}>connecting food lovers</Text>
+                        </View>
+                        <View style={horiz.buttonContainer}>
+                            <TouchableHighlight
+                                style={horiz.button}
+                                onPress={() => {console.log("pressed")}}
+                                >
+                                <Text style={horiz.buttonText}> Get Started </Text>
+                            </TouchableHighlight>
+                        </View>
+                    </View>
                 </View>
-                <View style={styles.buttonContainer}>
-                    <TouchableHighlight
-                        style={styles.button}
-                        onPress={() => {console.log("pressed")}}
-                        >
-                        <Text style={styles.buttonText}> Get Started </Text>
-                    </TouchableHighlight>
-                </View>
-            </View>
-        );
+            );  
+        }
     }
 }
 
-const styles = StyleSheet.create({
+const vert = StyleSheet.create({
         container: {
             flex: 1,
             backgroundColor: '#fff',
-            justifyContent: 'space-between'
+            justifyContent: 'space-between',
         },
         logoContainer: {
             paddingTop: Constants.statusBarHeight + 100,
@@ -86,4 +139,62 @@ const styles = StyleSheet.create({
             letterSpacing: 0.38,
             textAlign: "center",
         }
+})
+
+const horiz = StyleSheet.create({
+    container: {
+        flex: 1,
+        flexDirection: 'row',
+        backgroundColor: '#fff',
+        justifyContent: 'space-between',
+    },
+    logoContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    logo: {
+        width: 300,
+        height: 300
+    },
+    titleContainer: {
+        marginTop: 130,
+        margin: 50
+    },
+    title: {
+        fontFamily: "space-mono",
+        fontSize: 50,
+        color: "#848484",
+        letterSpacing: 0.38,
+        textAlign: "center",
+    },
+    subtitle: {
+        fontStyle: "italic",
+        fontFamily: "space-mono",
+        fontSize: 25,
+        color: "#848484",
+        letterSpacing: 0.38,
+        textAlign: "center",
+    },
+    buttonContainer: {
+        flex: 1,
+        margin: 20,
+        marginBottom: 130
+    },
+    button: {
+        flex: 1,
+        alignItems: 'center',
+        backgroundColor: '#16A9FF',
+        padding: 10,
+        justifyContent: 'center'
+    },
+    buttonText: {
+        flex: 1,
+        fontFamily: "space-mono",
+        fontWeight: "bold",
+        fontSize: 18,
+        color: "#FFF",
+        letterSpacing: 0.38,
+        textAlign: "center",
+    }
 })
