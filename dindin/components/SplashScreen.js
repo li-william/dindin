@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, Dimensions, Image, TouchableHighlight } from 'react-native';
+import { Platform, NativeModules, View, Text, StyleSheet, Dimensions, Image, TouchableHighlight } from 'react-native';
 import { Constants, ScreenOrientation } from 'expo'
 
 
@@ -8,6 +8,7 @@ export default class SplashScreen extends React.Component {
         super(props)
         this.state = {
             portrait: 1,
+            language: ''
         }
     }
 
@@ -21,9 +22,25 @@ export default class SplashScreen extends React.Component {
             console.log('landscape')
         }
     }
+
+    getDefaultLanguage() {
+        if (Platform.OS === 'ios') {
+            this.setState({
+                'lang' : NativeModules.SettingsManager.settings.AppleLocale
+            });
+        }
+        else {
+            //console.log( NativeModules.I18nManager.localeIdentifier)
+            this.setState({
+                'lang' : NativeModules.I18nManager.localeIdentifier
+            });
+        }
+    }
+
     componentDidMount() {
         //ScreenOrientation.allowAsync(ScreenOrientation.Orientation.LANDSCAPE);
         this.getOrientation();
+        this.getDefaultLanguage();
 
         Dimensions.addEventListener('change', () => {
             this.getOrientation();
@@ -42,7 +59,9 @@ export default class SplashScreen extends React.Component {
                     </View>
                     <View style={vert.titleContainer}>
                         <Text style={vert.title}>DinDin</Text>
-                        <Text style={vert.subtitle}>connecting food lovers</Text>
+                        <Text style={vert.subtitle}>
+                        {(this.state.lang === 'en_US') ? 'connecting food lovers' : 'توصيل عشاق الطعام'}
+                        </Text>
                     </View>
                     <View style={vert.buttonContainer}>
                         <TouchableHighlight
@@ -66,7 +85,9 @@ export default class SplashScreen extends React.Component {
                     <View>
                         <View style={horiz.titleContainer}>
                             <Text style={horiz.title}>DinDin</Text>
-                            <Text style={horiz.subtitle}>connecting food lovers</Text>
+                            <Text style={horiz.subtitle}>
+                            {(this.state.lang === 'en_US') ? 'connecting food lovers' : 'توصيل عشاق الطعام'}
+                            </Text>
                         </View>
                         <View style={horiz.buttonContainer}>
                             <TouchableHighlight
