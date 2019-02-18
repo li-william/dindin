@@ -9,7 +9,7 @@ export default class SplashScreen extends React.Component {
         super(props)
         this.state = {
             portrait: 1,
-            language: ''
+            lang: ''
         }
     }
 
@@ -27,13 +27,13 @@ export default class SplashScreen extends React.Component {
     getDefaultLanguage() {
         if (Platform.OS === 'ios') {
             this.setState({
-                'lang' : NativeModules.SettingsManager.settings.AppleLocale
+                lang : NativeModules.SettingsManager.settings.AppleLocale
             });
         }
         else {
             //console.log( NativeModules.I18nManager.localeIdentifier)
             this.setState({
-                'lang' : NativeModules.I18nManager.localeIdentifier
+                lang : NativeModules.I18nManager.localeIdentifier
             });
         }
     }
@@ -183,7 +183,7 @@ const horiz = StyleSheet.create({
         alignItems: 'center',
     },
     logo: {
-        width: 300,
+        width: 315,
         height: 300
     },
     titleContainer: {

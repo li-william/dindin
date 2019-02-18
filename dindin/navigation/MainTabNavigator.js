@@ -6,7 +6,11 @@ import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import LinksScreen from '../screens/LinksScreen';
 import SettingsScreen from '../screens/SettingsScreen';
+import SplashScreen from '../components/SplashScreen';
 
+const SplashStack = createStackNavigator({
+  Splash: SplashScreen,
+})
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
 });
@@ -54,6 +58,7 @@ SettingsStack.navigationOptions = {
 };
 
 export default createBottomTabNavigator({
+  SplashStack,
   HomeStack,
   LinksStack,
   SettingsStack,
