@@ -4,13 +4,15 @@ import { Constants, ScreenOrientation } from 'expo'
 import { Localization } from 'expo-localization';
 import { i18n } from 'i18n-js'
 
+import { NavigationActions, createStackNavigator } from 'react-navigation';
+import HomeScreen from '../screens/HomeScreen';
 
 export default class SplashScreen extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
             portrait: 1,
-            lang : ''
+            lang: ''
         }
     }
 
@@ -44,6 +46,10 @@ export default class SplashScreen extends React.Component {
         //console.log(Localization.locale)
     }
 
+    _navigateTo = (routeName) => {
+        this.props.navigation.navigate(routeName)
+    }
+
     componentDidMount() {
         //ScreenOrientation.allowAsync(ScreenOrientation.Orientation.LANDSCAPE);
         this.getOrientation();
@@ -73,8 +79,9 @@ export default class SplashScreen extends React.Component {
                     <View style={vert.buttonContainer}>
                         <TouchableHighlight
                             style={vert.button}
-                            onPress={() => {console.log("pressed")}}
-                            >
+                            onPress={() => {console.log("pressed")
+                                this._navigateTo("HomeScreen")
+                            }}>
                             <Text style={vert.buttonText}> Get Started </Text>
                         </TouchableHighlight>
                     </View>
@@ -99,7 +106,9 @@ export default class SplashScreen extends React.Component {
                         <View style={horiz.buttonContainer}>
                             <TouchableHighlight
                                 style={horiz.button}
-                                onPress={() => {console.log("pressed")}}
+                                onPress={() => {console.log("pressed")
+                                this._navigateTo("HomeScreen")
+                                }}
                                 >
                                 <Text style={horiz.buttonText}> Get Started </Text>
                             </TouchableHighlight>
@@ -123,8 +132,8 @@ const vert = StyleSheet.create({
             alignItems: 'center',
         },
         logo: {
-            width: 273,
-            height: 260
+            width: 315,
+            height: 300
         },
         titleContainer: {
             marginTop: 50
@@ -182,8 +191,8 @@ const horiz = StyleSheet.create({
         alignItems: 'center',
     },
     logo: {
-        width: 273,
-        height: 260
+        width: 315,
+        height: 300
     },
     titleContainer: {
         marginTop: 130,

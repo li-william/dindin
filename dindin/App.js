@@ -21,8 +21,12 @@ export default class App extends React.Component {
       );
     } else {
       return (
+<<<<<<< HEAD
 
         <SplashScreen />
+=======
+        <SplashScreen/>
+>>>>>>> 001a341ec3195e26978030f35d3fa279813c9703
         // <View style={styles.container}>
         //   {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
         //   <AppNavigator />
