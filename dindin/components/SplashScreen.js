@@ -1,7 +1,8 @@
 import React from 'react';
 import { Platform, NativeModules, View, Text, StyleSheet, Dimensions, Image, TouchableHighlight } from 'react-native';
 import { Constants, ScreenOrientation } from 'expo'
-
+import { NavigationActions, createStackNavigator } from 'react-navigation';
+import HomeScreen from '../screens/HomeScreen';
 
 export default class SplashScreen extends React.Component {
     constructor(props) {
@@ -37,6 +38,10 @@ export default class SplashScreen extends React.Component {
         }
     }
 
+    _navigateTo = (routeName) => {
+        this.props.navigation.navigate(routeName)
+    }
+
     componentDidMount() {
         //ScreenOrientation.allowAsync(ScreenOrientation.Orientation.LANDSCAPE);
         this.getOrientation();
@@ -66,8 +71,9 @@ export default class SplashScreen extends React.Component {
                     <View style={vert.buttonContainer}>
                         <TouchableHighlight
                             style={vert.button}
-                            onPress={() => {console.log("pressed")}}
-                            >
+                            onPress={() => {console.log("pressed")
+                                this._navigateTo("HomeScreen")
+                            }}>
                             <Text style={vert.buttonText}> Get Started </Text>
                         </TouchableHighlight>
                     </View>
@@ -92,7 +98,9 @@ export default class SplashScreen extends React.Component {
                         <View style={horiz.buttonContainer}>
                             <TouchableHighlight
                                 style={horiz.button}
-                                onPress={() => {console.log("pressed")}}
+                                onPress={() => {console.log("pressed")
+                                this._navigateTo("HomeScreen")
+                                }}
                                 >
                                 <Text style={horiz.buttonText}> Get Started </Text>
                             </TouchableHighlight>
@@ -116,7 +124,7 @@ const vert = StyleSheet.create({
             alignItems: 'center',
         },
         logo: {
-            width: 300,
+            width: 315,
             height: 300
         },
         titleContainer: {
