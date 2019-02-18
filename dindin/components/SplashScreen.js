@@ -47,7 +47,9 @@ export default class SplashScreen extends React.Component {
     }
 
     _navigateTo = (routeName) => {
-        this.props.navigation.navigate(routeName)
+        this.props.parent.setState({
+            started: true
+        });
     }
 
     componentDidMount() {
@@ -216,20 +218,20 @@ const horiz = StyleSheet.create({
     buttonContainer: {
         flex: 1,
         margin: 20,
-        marginBottom: 130
+        marginBottom: 60
     },
     button: {
         flex: 1,
         alignItems: 'center',
         backgroundColor: '#16A9FF',
-        padding: 20,
+        padding: 5,
         justifyContent: 'center'
     },
     buttonText: {
         flex: 1,
         fontFamily: "space-mono",
         fontWeight: "bold",
-        fontSize: 10,
+        fontSize: 20,
         color: "#FFF",
         letterSpacing: 0.38,
         textAlign: "center",

@@ -3,10 +3,12 @@ import { Platform, StatusBar, StyleSheet, View } from 'react-native';
 import { AppLoading, Asset, Font, Icon } from 'expo';
 import AppNavigator from './navigation/AppNavigator';
 import SplashScreen from './components/SplashScreen';
+import HomeScreen from './screens/HomeScreen';
 
 export default class App extends React.Component {
   state = {
     isLoadingComplete: false,
+    started: false
   };
 
   render() {
@@ -20,14 +22,22 @@ export default class App extends React.Component {
         />
       );
     } else {
-      return (
-
-        <SplashScreen />
-        // <View style={styles.container}>
-        //   {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-        //   <AppNavigator />
-        // </View>
-      );
+      if (!this.state.started){
+        return (
+          <SplashScreen 
+            parent={this}
+          />
+          // <View style={styles.container}>
+          //   {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
+          //   <AppNavigator />
+          // </View>
+        );
+      }
+      else {
+        return (
+          <HomeScreen />
+        );
+      }
     }
   }
 
