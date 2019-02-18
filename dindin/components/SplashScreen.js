@@ -1,6 +1,8 @@
 import React from 'react';
 import { Platform, NativeModules, View, Text, StyleSheet, Dimensions, Image, TouchableHighlight } from 'react-native';
 import { Constants, ScreenOrientation } from 'expo'
+import { Localization } from 'expo-localization';
+import { i18n } from 'i18n-js'
 
 
 export default class SplashScreen extends React.Component {
@@ -8,7 +10,7 @@ export default class SplashScreen extends React.Component {
         super(props)
         this.state = {
             portrait: 1,
-            language: ''
+            lang : ''
         }
     }
 
@@ -24,17 +26,22 @@ export default class SplashScreen extends React.Component {
     }
 
     getDefaultLanguage() {
-        if (Platform.OS === 'ios') {
+        /*if (Platform.OS === 'ios') {
             this.setState({
-                'lang' : NativeModules.SettingsManager.settings.AppleLocale
+                lang : NativeModules.SettingsManager.settings.AppleLocale
             });
         }
         else {
             //console.log( NativeModules.I18nManager.localeIdentifier)
             this.setState({
-                'lang' : NativeModules.I18nManager.localeIdentifier
+                lang : NativeModules.I18nManager.localeIdentifier
             });
-        }
+        }*/
+
+        this.setState({
+            lang: Localization.locale.replace('-','_')
+        });
+        //console.log(Localization.locale)
     }
 
     componentDidMount() {
@@ -116,8 +123,8 @@ const vert = StyleSheet.create({
             alignItems: 'center',
         },
         logo: {
-            width: 300,
-            height: 300
+            width: 273,
+            height: 260
         },
         titleContainer: {
             marginTop: 50
@@ -175,8 +182,8 @@ const horiz = StyleSheet.create({
         alignItems: 'center',
     },
     logo: {
-        width: 300,
-        height: 300
+        width: 273,
+        height: 260
     },
     titleContainer: {
         marginTop: 130,
@@ -206,14 +213,14 @@ const horiz = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         backgroundColor: '#16A9FF',
-        padding: 10,
+        padding: 20,
         justifyContent: 'center'
     },
     buttonText: {
         flex: 1,
         fontFamily: "space-mono",
         fontWeight: "bold",
-        fontSize: 18,
+        fontSize: 10,
         color: "#FFF",
         letterSpacing: 0.38,
         textAlign: "center",
