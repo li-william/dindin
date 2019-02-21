@@ -27,15 +27,13 @@ export default class App extends React.Component {
           <SplashScreen 
             parent={this}
           />
-          // <View style={styles.container}>
-          //   {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-          //   <AppNavigator />
-          // </View>
         );
       }
       else {
         return (
-          <HomeScreen />
+          <View style={styles.container}>
+            {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
+          </View>
         );
       }
     }
