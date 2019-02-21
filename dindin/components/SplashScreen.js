@@ -162,7 +162,6 @@ const vert = StyleSheet.create({
         },
         button: {
             flex: 1,
-            height: 60,
             alignItems: 'center',
             backgroundColor: '#16A9FF',
             padding: 10,

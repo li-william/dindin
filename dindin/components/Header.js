@@ -9,20 +9,13 @@ import {
   View,
 } from 'react-native';
 import { WebBrowser } from 'expo';
-import Header from '../components/Header'
-import Carousel from '../components/Carousel'
-import CalendarList from '../components/CalendarList'
 
-import { MonoText } from '../components/StyledText';
-
-export default class HomeScreen extends React.Component {
+export default class Header extends React.Component {
 
     render() {
       return (
         <View style={styles.container}>
-          <Header/>
-          <Carousel/>
-          <CalendarList/>
+            <Text>Header</Text>
         </View>
       )
     }
