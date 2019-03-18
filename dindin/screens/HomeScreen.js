@@ -20,9 +20,17 @@ export default class HomeScreen extends React.Component {
     render() {
       return (
         <View style={styles.container}>
-          <Header/>
-          <Carousel/>
-          <CalendarList/>
+          <View style={styles.header}>
+            <Header/>
+          </View>
+
+          <View style={styles.carousel}>
+            <Carousel/>
+          </View>
+
+          <View style={styles.calendarList}>
+            <CalendarList/>
+          </View>
         </View>
       )
     }
@@ -32,5 +40,14 @@ export default class HomeScreen extends React.Component {
 styles = StyleSheet.create({
   container: {
     backgroundColor: '#FFF'
+  },
+  header: {
+
+  },
+  carousel: {
+
+  },
+  calendarList: {
+
   }
 });

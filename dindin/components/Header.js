@@ -9,13 +9,21 @@ import {
   View,
 } from 'react-native';
 import { WebBrowser } from 'expo';
+import {
+  Card,
+  CardImage,
+  CardTitle,
+  CardContent,
+  CardAction
+} from './Invitation'
 
 export default class Header extends React.Component {
 
     render() {
       return (
         <View style={styles.container}>
-            <Text>Header</Text>
+          <Card>
+          </Card>
         </View>
       )
     }
