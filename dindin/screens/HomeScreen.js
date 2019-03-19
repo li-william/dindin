@@ -20,17 +20,15 @@ export default class HomeScreen extends React.Component {
     render() {
       return (
         <View style={styles.container}>
-          <View style={styles.header}>
-            <Header/>
-          </View>
+          <Header/>
 
-          <View style={styles.carousel}>
+          {/* <View style={styles.carousel}>
             <Carousel/>
           </View>
 
           <View style={styles.calendarList}>
             <CalendarList/>
-          </View>
+          </View> */}
         </View>
       )
     }

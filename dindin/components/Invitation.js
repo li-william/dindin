@@ -3,69 +3,48 @@ import {
   StyleSheet,
   Text,
   View,
+  Image,
+  Button
 } from 'react-native'
 
-class Card extends Component {
+class Invitation extends Component {
   render() {
-    const newStyles = this.props.styles || {};
+    props = this.props
     return (
-      <View style={[styles.container, styles.card, newStyles.card]}>
-        {this.props.children}
-      </View>
-    );
-  }
-}
+      <View style={[styles.container, styles.card]}>
+        <View style={styles.cardContent}>
+          <Image
+            style={{width: 60, height: 60}}
+            source={{uri: props.imgurl}}
+          />
+          <View style={styles.text}>
+            <Text style={styles.titleText}>{props.name}</Text>
+            <Text style={styles.dateText}>{props.date}</Text>
+          </View>
+        </View>
 
-class CardImage extends Component {
-  render () {
-    const newStyles = this.props.styles || {};
-    return (
-      <View style={[styles.cardImage, newStyles.cardImage]}>
-        {this.props.children}
-      </View>
-    );
-  }
-}
+        <View
+          style={styles.separator}
+        />
 
-class CardTitle extends Component {
-  render () {
-    const newStyles = this.props.styles || {};
-    return (
-      <View style={[styles.cardTitle, newStyles.cardTitle]}>
-        {this.props.children}
-      </View>
-    );
-  }
-}
-
-class CardContent extends Component {
-  render () {
-    const newStyles = this.props.styles || {};
-    return (
-      <View style={[styles.cardContent, newStyles.cardContent]}>
-        {this.props.children}
-      </View>
-    );
-  }
-}
-
-class CardAction extends Component {
-  render () {
-    const newStyles = this.props.styles || {};
-    return (
-      <View>
-        {this.props.separator ? <Separator /> : null}
-        <View style={[styles.cardAction, newStyles.cardAction]}>
-          {this.props.children}
+        <View style={styles.cardAction}>
+          <Button
+            style={styles.button}
+            onPress={() => {}}
+            title="Accept"
+            color="#6CDE71"
+            accessibilityLabel="Accept Invitation"
+          />
+          <Button
+            style={styles.button}
+            onPress={() => {}}
+            title="Decline"
+            color="#F33C20"
+            accessibilityLabel="Decline Invitation"
+          />
         </View>
       </View>
     );
-  }
-}
-
-class Separator extends Component {
-  render () {
-    return <View style={styles.separator} />
   }
 }
 
@@ -96,16 +75,21 @@ const styles = StyleSheet.create({
     padding: 16
   },
   cardContent: {
-    paddingRight: 16,
-    paddingLeft: 16,
-    paddingTop: 16,
-    paddingBottom: 16,
-  },
-  cardAction: {
-    margin: 8,
+    flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
+    paddingBottom: 30,
+    paddingTop: 30,
+  },
+  cardAction: {
+    flex: 1,
+    flexDirection: 'row',
+    paddingTop: 30,
+    alignItems: 'center',
 
+  },
+  text: {
+    flex: 1,
   },
   separator: {
     flex: 1,
@@ -115,10 +99,5 @@ const styles = StyleSheet.create({
 });
 
 export {
-  Card,
-  CardTitle,
-  CardAction,
-  CardContent,
-  CardImage,
-  Separator
+  Invitation
 }
