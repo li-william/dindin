@@ -3,12 +3,13 @@ import { Platform, StatusBar, StyleSheet, View } from 'react-native';
 import { AppLoading, Asset, Font, Icon } from 'expo';
 import AppNavigator from './navigation/AppNavigator';
 import SplashScreen from './components/SplashScreen';
+import FBScreen from './components/FBScreen';
 import HomeScreen from './screens/HomeScreen';
 
 export default class App extends React.Component {
   state = {
     isLoadingComplete: false,
-    started: false
+    screen: "splash"
   };
 
   render() {
@@ -22,12 +23,19 @@ export default class App extends React.Component {
         />
       );
     } else {
-      if (!this.state.started){
+      if (this.state.screen === "splash"){
         return (
           <SplashScreen 
             parent={this}
           />
         );
+      }
+      else if (this.state.screen === "fb") {
+        return (
+          <FBScreen 
+            parent={this}
+          />
+        )
       }
       else {
         return (
