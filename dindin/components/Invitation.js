@@ -4,14 +4,15 @@ import {
   Text,
   View,
   Image,
-  Button
+  Button,
+  TouchableHighlight
 } from 'react-native'
 
-class Invitation extends Component {
+export default class Invitation extends Component {
   render() {
     props = this.props
     return (
-      <View style={[styles.container, styles.card]}>
+      <View style={styles.container}>
         <View style={styles.cardContent}>
           <Image
             style={{width: 60, height: 60}}
@@ -28,20 +29,16 @@ class Invitation extends Component {
         />
 
         <View style={styles.cardAction}>
-          <Button
-            style={styles.button}
-            onPress={() => {}}
-            title="Accept"
-            color="#6CDE71"
-            accessibilityLabel="Accept Invitation"
-          />
-          <Button
-            style={styles.button}
-            onPress={() => {}}
-            title="Decline"
-            color="#F33C20"
-            accessibilityLabel="Decline Invitation"
-          />
+          <TouchableHighlight
+            style={styles.declineButton}
+            onPress={() => {}}>
+            <Text style={styles.buttonText}>Decline</Text>
+          </TouchableHighlight>
+          <TouchableHighlight
+            style={styles.acceptButton}
+            onPress={() => {}}>
+            <Text style={styles.buttonText}>Accept</Text>  
+          </TouchableHighlight>
         </View>
       </View>
     );
@@ -51,20 +48,11 @@ class Invitation extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-    margin: 5
-  },
-  card: {
-    backgroundColor: "#fff",
-    borderRadius: 2,
-    shadowColor: "#000000",
-    shadowOpacity: 0.3,
-    shadowRadius: 1,
-    shadowOffset: {
-      height: 1,
-      width: 0.3,
-    }
+    // alignItems: 'center',
+    // backgroundColor: '#F5FCFF',
+    margin: 30,
+    borderWidth: 5,
+    borderColor: '#d6d7da'
   },
   cardImage: {
     flex: 1
@@ -86,18 +74,34 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     paddingTop: 30,
     alignItems: 'center',
-
+  },
+  acceptButton: {
+    flex: 1,
+    height: 45,
+    alignItems: 'center',
+    backgroundColor: '#6CDE71',
+  },
+  declineButton: {
+    flex: 1,
+    height: 45,
+    alignItems: 'center',
+    backgroundColor: '#F33C20',
+  },
+  buttonText: {
+    fontWeight: "bold",
+    fontSize: 18,
+    color: "#FFF",
+    letterSpacing: 0.38,
   },
   text: {
     flex: 1,
+    paddingLeft: 10,
   },
-  separator: {
-    flex: 1,
-    height: 1,
-    backgroundColor: '#E9E9E9'
-  }
+  titleText: {
+    fontSize: 20,
+  },
+  dateText: {
+    fontSize: 14,
+    color: "#676564"
+  },
 });
-
-export {
-  Invitation
-}
