@@ -38,11 +38,11 @@ export default class MyCarousel extends React.Component {
 
     _renderItem ({item, index}) {
       return (
-        <Invitation
-          imgurl={item.imgurl}
-          name={item.name}
-          date={item.date}
-        />
+          <Invitation
+            imgurl={item.imgurl}
+            name={item.name}
+            date={item.date}
+          />
       );
     }
 
@@ -55,6 +55,7 @@ export default class MyCarousel extends React.Component {
             sliderWidth={sliderWidth}
             itemWidth={itemWidth}
             loop={true}
+            containerCustomStyle={{height: 200}}
           />
       );
     }

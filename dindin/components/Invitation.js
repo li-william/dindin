@@ -8,7 +8,7 @@ import {
   TouchableHighlight
 } from 'react-native'
 
-export default class Invitation extends Component {
+export default class Invitation extends React.Component {
   render() {
     props = this.props
     return (
@@ -23,10 +23,6 @@ export default class Invitation extends Component {
             <Text style={styles.dateText}>{props.date}</Text>
           </View>
         </View>
-
-        <View
-          style={styles.separator}
-        />
 
         <View style={styles.cardAction}>
           <TouchableHighlight
@@ -48,11 +44,11 @@ export default class Invitation extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // alignItems: 'center',
-    // backgroundColor: '#F5FCFF',
+    alignItems: 'center',
+    backgroundColor: '#F5FCFF',
     margin: 30,
-    borderWidth: 5,
-    borderColor: '#d6d7da'
+    // borderWidth: 5,
+    // borderColor: '#d6d7da'
   },
   cardImage: {
     flex: 1
