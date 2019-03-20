@@ -37,13 +37,13 @@ export default class MyCarousel extends React.Component {
   }
 
     _renderItem ({item, index}) {
-        return (
-          <Invitation
-            imgurl={item.imgurl}
-            name={item.name}
-            date={item.date}
-          />
-        );
+      return (
+        <Invitation
+          imgurl={item.imgurl}
+          name={item.name}
+          date={item.date}
+        />
+      );
     }
 
     render () {
