@@ -28,9 +28,13 @@ export default class HomeScreen extends React.Component {
           <View style={styles.calendarList}>
             <Event
               date={"Sunday, June 4th"}
-              name={"John Doe"}
+              name={"Jason Wei"}
               time={"8:00 AM"}
               imgurl={"https://scontent.fric1-2.fna.fbcdn.net/v/t1.0-9/49767902_2600475799981915_7818062036138459136_o.jpg?_nc_cat=111&_nc_ht=scontent.fric1-2.fna&oh=56da0bd4bcb34135757a9bbcea742b44&oe=5D0FBFA9"}
+            />
+            <Event
+              date={"Sunday, June 5th"}
+              empty={true}
             />
           </View>
         </View>

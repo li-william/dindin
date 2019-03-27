@@ -81,7 +81,7 @@ export default class SplashScreen extends React.Component {
                         <TouchableHighlight
                             style={vert.button}
                             onPress={() => {console.log("pressed")
-                                this._navigateTo("fb")
+                                this._navigateTo("xd")
                             }}>
                             <Text style={vert.buttonText}> Get Started </Text>
                         </TouchableHighlight>
@@ -108,7 +108,7 @@ export default class SplashScreen extends React.Component {
                             <TouchableHighlight
                                 style={horiz.button}
                                 onPress={() => {console.log("pressed")
-                                this._navigateTo("fb")
+                                this._navigateTo("xd")
                                 }}
                                 >
                                 <Text style={horiz.buttonText}> Get Started </Text>
