@@ -8,14 +8,16 @@ import {
   TouchableHighlight
 } from 'react-native'
 
+
 export default class Invitation extends React.Component {
+
   render() {
     props = this.props
     return (
       <View style={styles.container}>
         <View style={styles.cardContent}>
           <Image
-            style={{width: 60, height: 60}}
+            style={{width: 60, height: 60, padding: 10}}
             source={{uri: props.imgurl}}
           />
           <View style={styles.text}>
@@ -27,12 +29,16 @@ export default class Invitation extends React.Component {
         <View style={styles.cardAction}>
           <TouchableHighlight
             style={styles.declineButton}
-            onPress={() => {}}>
+            onPress={() => {
+              console.log("declined")
+            }}>
             <Text style={styles.buttonText}>Decline</Text>
           </TouchableHighlight>
           <TouchableHighlight
             style={styles.acceptButton}
-            onPress={() => {}}>
+            onPress={() => {
+              console.log("accepted");
+            }}>
             <Text style={styles.buttonText}>Accept</Text>  
           </TouchableHighlight>
         </View>
@@ -47,8 +53,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
     margin: 30,
-    // borderWidth: 5,
-    // borderColor: '#d6d7da'
+    borderWidth: 1,
+    borderColor: '#d6d7da'
   },
   cardImage: {
     flex: 1

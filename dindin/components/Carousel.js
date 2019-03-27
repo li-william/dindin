@@ -48,6 +48,8 @@ export default class MyCarousel extends React.Component {
 
     render () {
       return (
+        <View>
+          <Text> PENDING ({ENTRIES.length})</Text>
           <Carousel
             ref={(c) => { this._carousel = c; }}
             data={this.state.entries}
@@ -57,6 +59,7 @@ export default class MyCarousel extends React.Component {
             loop={true}
             containerCustomStyle={{height: 200}}
           />
+        </View>
       );
     }
 }
