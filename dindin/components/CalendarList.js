@@ -46,6 +46,10 @@ const DATA = [
 
 export default class CalendarList extends React.Component {
 
+    _filterByActiveMonth() {
+        
+    }
+
     render() {
       return (
           <ScrollView style={{flex: 1}}>

@@ -16,7 +16,7 @@ import CalendarList from '../components/CalendarList'
 import MonthCarousel from '../components/MonthCarousel'
 import { MonoText } from '../components/StyledText';
 
-const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sept','Nov','Dec']
+const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Nov','Dec']
 export default class HomeScreen extends React.Component {
 
     constructor(props) {
@@ -42,7 +42,9 @@ export default class HomeScreen extends React.Component {
             <MyCarousel/>
           </View>
         <View style={{height: screenHeight}}>
-          <CalendarList/>
+          <CalendarList
+            activeMonth={this.state.activeMonth}
+          />
         </View>
         </View>
       )

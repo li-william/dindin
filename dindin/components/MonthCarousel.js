@@ -14,7 +14,7 @@ import Carousel from 'react-native-snap-carousel';
 import { sliderWidth, itemWidth } from '../assets/SliderEntry.style';
 
 
-const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sept','Nov','Dec']
+const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Nov','Dec']
 
 export default class MonthCarousel extends React.Component {
 

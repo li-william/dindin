@@ -45,7 +45,7 @@ export default class Event extends React.Component {
         }
         else {
             return (
-                <View style={{flex: 1, paddingHorizontal: 40, paddingTop: 15}}>
+                <View style={{flex: 1, paddingHorizontal: 40}}>
                     <Text style={{fontWeight: 'bold', fontSize: 16, marginVertical: 10}}>
                         {props.date}
                     </Text>
