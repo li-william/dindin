@@ -6,6 +6,7 @@ import {
   StyleSheet,
   Text,
   TouchableOpacity,
+  TouchableHighlight,
   View,
   Button
 } from 'react-native';
@@ -17,28 +18,44 @@ export default class Event extends React.Component {
         props = this.props
         if (props.empty) {
             return (
-                <View style={{paddingHorizontal: 40}}>
-                    <Text style={{fontWeight: 'bold', fontSize: 16, marginVertical: 20}}>
+                <View style={{flex: 1, paddingHorizontal: 40}}>
+                    <Text style={{fontWeight: 'bold', fontSize: 16, marginVertical: 10}}>
                         {props.date}
                     </Text>
+                    <View
+                        style={{
+                            borderBottomColor: '#8C8B8A',
+                            borderBottomWidth: 0.5,
+                        }}
+                    />
 
-                    <View style={styles.details}>
-                        <Image
-                            style={{width: 243, height: 52, alignSelf: 'center'}}
-                            source={require('../assets/images/addevent.png')}
-                        />
+                    <View style={{flexDirection: 'row', justifyContent: 'center', marginTop: 10}}>
+                        <TouchableOpacity
+                            onPress={() => {
+                            console.log("add event");
+                        }}>
+                            <Image
+                                style={{width: 243, height: 52, alignSelf: 'center'}}
+                                source={require('../assets/images/addevent.png')}
+                            />
+                        </TouchableOpacity>
                     </View>
                 </View>
             );
         }
         else {
             return (
-                <View style={{paddingHorizontal: 40, paddingTop: 15}}>
-                    <Text style={{fontWeight: 'bold', fontSize: 16, marginVertical: 20}}>
+                <View style={{flex: 1, paddingHorizontal: 40, paddingTop: 15}}>
+                    <Text style={{fontWeight: 'bold', fontSize: 16, marginVertical: 10}}>
                         {props.date}
                     </Text>
-
-                    <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+                        <View
+                            style={{
+                                borderBottomColor: '#8C8B8A',
+                                borderBottomWidth: 0.5,
+                            }}
+                        />
+                    <View style={{flexDirection: 'row', justifyContent: 'space-between', marginTop: 10}}>
                         <View style={{flexDirection: 'row'}}>
                             <Image
                                 style={{width: 60, height: 60, borderRadius: 30}}
@@ -55,16 +72,33 @@ export default class Event extends React.Component {
                         </View>
 
                         <View style={{flexDirection: 'row'}}>
-                            <Image
-                                style={{width: 60, height: 60, margin: 5}}
-                                source={require('../assets/images/call.png')}
-                            />
-                            <Image
-                                style={{width: 60, height: 60, margin: 5}}
-                                source={require('../assets/images/email.png')}
-                            />
+                            <TouchableOpacity
+                                onPress={() => {
+                                console.log("call");
+                            }}>
+                                <Image
+                                    style={{width: 60, height: 60, margin: 5}}
+                                    source={require('../assets/images/call.png')}
+                                />
+                            </TouchableOpacity>
+                            <TouchableOpacity
+                                onPress={() => {
+                                console.log("email");
+                            }}>
+                                <Image
+                                    style={{width: 60, height: 60, margin: 5}}
+                                    source={require('../assets/images/email.png')}
+                                />
+                            </TouchableOpacity>
                         </View>
                     </View>
+                    <View
+                        style={{
+                            marginVertical: 5,
+                            borderBottomColor: '#8C8B8A',
+                            borderBottomWidth: 0.5,
+                        }}
+                    />
                 </View>
             );
         }
@@ -81,6 +115,7 @@ styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'row',
         alignContent: 'space-between',
+        marginTop: 10,
     },
     text: {
         flex: 1,

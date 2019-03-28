@@ -5,7 +5,8 @@ import {
   View,
   Image,
   Button,
-  TouchableHighlight
+  TouchableHighlight,
+  TouchableOpacity
 } from 'react-native'
 
 
@@ -17,7 +18,7 @@ export default class Invitation extends React.Component {
       <View style={styles.container}>
         <View style={styles.cardContent}>
           <Image
-            style={{width: 60, height: 60, padding: 10}}
+            style={{width: 60, height: 60, marginLeft: 15, borderRadius: 30}}
             source={{uri: props.imgurl}}
           />
           <View style={styles.text}>
@@ -26,21 +27,27 @@ export default class Invitation extends React.Component {
           </View>
         </View>
 
+        <View
+          style={{
+              borderBottomColor: '#8C8B8A',
+              borderBottomWidth: 0.5,
+          }}
+        />
         <View style={styles.cardAction}>
-          <TouchableHighlight
+          <TouchableOpacity
             style={styles.declineButton}
             onPress={() => {
               console.log("declined")
             }}>
-            <Text style={styles.buttonText}>Decline</Text>
-          </TouchableHighlight>
-          <TouchableHighlight
+            <Text style={styles.declineButtonText}>Decline</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
             style={styles.acceptButton}
             onPress={() => {
               console.log("accepted");
             }}>
-            <Text style={styles.buttonText}>Accept</Text>  
-          </TouchableHighlight>
+            <Text style={styles.acceptButtonText}>Accept</Text>  
+          </TouchableOpacity>
         </View>
       </View>
     );
@@ -51,10 +58,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
     margin: 30,
     borderWidth: 1,
-    borderColor: '#d6d7da'
+    borderColor: '#d6d7da',
   },
   cardImage: {
     flex: 1
@@ -81,18 +87,20 @@ const styles = StyleSheet.create({
     flex: 1,
     height: 45,
     alignItems: 'center',
-    backgroundColor: '#6CDE71',
   },
   declineButton: {
     flex: 1,
     height: 45,
     alignItems: 'center',
-    backgroundColor: '#F33C20',
   },
-  buttonText: {
-    fontWeight: "bold",
+  acceptButtonText: {
+    color: 'green',
     fontSize: 18,
-    color: "#FFF",
+    letterSpacing: 0.38,
+  },
+  declineButtonText: {
+    color: 'red',
+    fontSize: 18,
     letterSpacing: 0.38,
   },
   text: {
