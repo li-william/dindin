@@ -49,7 +49,7 @@ export default class MyCarousel extends React.Component {
     render () {
       return (
         <View>
-          <Text style={{marginLeft: 20, marginTop: 20}}> PENDING ({ENTRIES.length})</Text>
+          <Text style={{fontWeight: 'bold', color: 'gray', marginLeft: 20}}> PENDING ({ENTRIES.length})</Text>
           <Carousel
             ref={(c) => { this._carousel = c; }}
             data={this.state.entries}

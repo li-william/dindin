@@ -48,7 +48,7 @@ export default class CalendarList extends React.Component {
 
     render() {
       return (
-          <ScrollView>
+          <ScrollView style={{flex: 1}}>
               {
                   DATA.map((item, index) => (
                       <Event key={item.id}
