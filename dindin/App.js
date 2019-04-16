@@ -5,6 +5,7 @@ import AppNavigator from './navigation/AppNavigator';
 import SplashScreen from './components/SplashScreen';
 import FBScreen from './components/FBScreen';
 import HomeScreen from './screens/HomeScreen';
+import Details from './components/Details'
 
 export default class App extends React.Component {
   state = {
@@ -37,11 +38,20 @@ export default class App extends React.Component {
           />
         )
       }
+      else if (this.state.screen == 'invitation-details') {
+        return (
+          <Details
+            parent={this}
+          />
+        )
+      }
       else {
         return (
           <View style={styles.container}>
             {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-            <AppNavigator />
+            <AppNavigator
+              parent={this}
+            />
           </View>
         );
       }

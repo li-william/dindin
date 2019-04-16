@@ -50,23 +50,38 @@ const DATA = [
         time: "2:00 PM",
         imgurl: "https://scontent-iad3-1.xx.fbcdn.net/v/t1.0-9/28379635_1789696051093678_1971250718972312962_n.jpg?_nc_cat=105&_nc_ht=scontent-iad3-1.xx&oh=9d39fab20de090d194d815c55547717d&oe=5D17E785"
     },
+    {
+      id: 5,
+      empty: false,
+      date: "Saturday, June 3rd",
+      name: "Kelly Xie",
+      time: "2:00 PM",
+      imgurl: "https://scontent-iad3-1.xx.fbcdn.net/v/t31.0-8/25311079_10213772517779549_1373377826081783697_o.jpg?_nc_cat=104&_nc_ht=scontent-iad3-1.xx&oh=01f1fdb8bbef1b8036f62be0a4eafe4c&oe=5D0FE2DC"
+    }
 ]
 
 export default class CalendarList extends React.Component {
+    _compareObj(a,b) {
+      return parseInt(a.date.replace( /(^.+\D)(\d+)(\D.+$)/i,'$2')) - parseInt(b.date.replace( /(^.+\D)(\d+)(\D.+$)/i,'$2'));
+    }
 
     render() {
       const filteredDATA = DATA.filter(obj => obj.date.includes(this.props.activeMonth))
-      if(filteredDATA.length === 0) {
+      const sortedDATA = [...filteredDATA].sort(this._compareObj)
+      if(sortedDATA.length === 0) {
         return (
-          <Event key={-1}
-            empty={true}
-          />
+          <View>
+            <Text style={{alignSelf: 'center', color:'gray', fontSize:18}}>There's nothing here yet.</Text>
+            <Event key={-1}
+              empty={true}
+            />
+          </View>
         );
       }
       return (
           <ScrollView style={{flex: 1}}>
               {
-                  filteredDATA.map((item, index) => (
+                  sortedDATA.map((item, index) => (
                       <Event key={item.id}
                         empty={item.empty}
                         date={item.date}

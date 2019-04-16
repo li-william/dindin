@@ -11,10 +11,8 @@ import {
 } from 'react-native';
 import { WebBrowser } from 'expo';
 import MyCarousel from '../components/Carousel'
-import Event from '../components/Events'
 import CalendarList from '../components/CalendarList'
 import MonthCarousel from '../components/MonthCarousel'
-import { MonoText } from '../components/StyledText';
 
 const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Nov','Dec']
 export default class HomeScreen extends React.Component {
@@ -30,6 +28,15 @@ export default class HomeScreen extends React.Component {
       this.setState({activeMonth: MONTHS[monthIndex]})
     }
 
+    showInvitationDetails() {
+      this._navigateTo("invitation-details")
+    }
+
+    _navigateTo = (routeName) => {
+      this.props.parent.setState({
+          screen: routeName
+      });
+  }
 
     render() {
       const screenHeight = Dimensions.get('window').height
@@ -39,7 +46,9 @@ export default class HomeScreen extends React.Component {
             onSelectActiveMonth={this.handleActiveMonth}
           />
           <View style={styles.carousel}>
-            <MyCarousel/>
+            <MyCarousel
+              onClickInvitation={this.showInvitationDetails}
+            />
           </View>
         <View style={{height: screenHeight}}>
           <CalendarList

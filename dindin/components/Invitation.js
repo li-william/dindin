@@ -6,7 +6,8 @@ import {
   Image,
   Button,
   TouchableHighlight,
-  TouchableOpacity
+  TouchableOpacity,
+  TouchableWithoutFeedback
 } from 'react-native'
 
 
@@ -16,16 +17,18 @@ export default class Invitation extends React.Component {
     props = this.props
     return (
       <View style={styles.container}>
-        <View style={styles.cardContent}>
-          <Image
-            style={{width: 60, height: 60, marginLeft: 15, borderRadius: 30}}
-            source={{uri: props.imgurl}}
-          />
-          <View style={styles.text}>
-            <Text style={styles.titleText}>{props.name}</Text>
-            <Text style={styles.dateText}>{props.date}</Text>
+        <TouchableWithoutFeedback onPress={() => {this._navigateTo("Details")}}>
+          <View style={styles.cardContent}>
+              <Image
+                style={{width: 60, height: 60, marginLeft: 15, borderRadius: 30}}
+                source={{uri: props.imgurl}}
+              />
+              <View style={styles.text}>
+                <Text style={styles.titleText}>{props.name}</Text>
+                <Text style={styles.dateText}>{props.date}</Text>
+              </View>
           </View>
-        </View>
+        </TouchableWithoutFeedback>
 
         <View
           style={{

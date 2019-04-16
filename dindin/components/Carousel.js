@@ -11,6 +11,7 @@ import {
 import { WebBrowser } from 'expo';
 import Carousel from 'react-native-snap-carousel';
 import Invitation from './Invitation'
+
 // import ENTRIES from '../assets/entries'
 import { sliderWidth, itemWidth } from '../assets/SliderEntry.style';
 
@@ -34,32 +35,38 @@ export default class MyCarousel extends React.Component {
     this.state = {
       entries: ENTRIES
     }
+    this._showInvitationDetails = this._showInvitationDetails.bind(this)
   }
 
-    _renderItem ({item, index}) {
-      return (
-          <Invitation
-            imgurl={item.imgurl}
-            name={item.name}
-            date={item.date}
-          />
-      );
-    }
+  _showInvitationDetails = () => {
+    this.props.onClickInvitation()
+  }
+  
+  _renderItem ({item, index}) {
+    return (
+        <Invitation
+          imgurl={item.imgurl}
+          name={item.name}
+          date={item.date}
+          details={Details}
+        />
+    );
+  }
 
-    render () {
-      return (
-        <View>
-          <Text style={{fontWeight: 'bold', color: 'gray', marginLeft: 20}}> PENDING ({ENTRIES.length})</Text>
-          <Carousel
-            ref={(c) => { this._carousel = c; }}
-            data={this.state.entries}
-            renderItem={this._renderItem}
-            sliderWidth={sliderWidth}
-            itemWidth={itemWidth}
-            loop={true}
-            containerCustomStyle={{height: 200}}
-          />
-        </View>
-      );
-    }
+  render () {
+    return (
+      <View>
+        <Text style={{fontWeight: 'bold', color: 'gray', marginLeft: 20}}> PENDING ({ENTRIES.length})</Text>
+        <Carousel
+          ref={(c) => { this._carousel = c; }}
+          data={this.state.entries}
+          renderItem={this._renderItem}
+          sliderWidth={sliderWidth}
+          itemWidth={itemWidth}
+          loop={true}
+          containerCustomStyle={{height: 200}}
+        />
+      </View>
+    );
+  }
 }
