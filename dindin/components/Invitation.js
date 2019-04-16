@@ -17,7 +17,7 @@ export default class Invitation extends React.Component {
     props = this.props
     return (
       <View style={styles.container}>
-        <TouchableWithoutFeedback onPress={() => {this._navigateTo("Details")}}>
+        <TouchableWithoutFeedback onPress={() => {this.props.onClick()}}>
           <View style={styles.cardContent}>
               <Image
                 style={{width: 60, height: 60, marginLeft: 15, borderRadius: 30}}

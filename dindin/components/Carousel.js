@@ -48,7 +48,7 @@ export default class MyCarousel extends React.Component {
           imgurl={item.imgurl}
           name={item.name}
           date={item.date}
-          details={Details}
+          onClick={this._showInvitationDetails}
         />
     );
   }

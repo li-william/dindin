@@ -9,7 +9,7 @@ import {
   Dimensions,
   View,
 } from 'react-native';
-import { WebBrowser } from 'expo';
+import { WebBrowser, Constants } from 'expo';
 import MyCarousel from '../components/Carousel'
 import CalendarList from '../components/CalendarList'
 import MonthCarousel from '../components/MonthCarousel'
@@ -50,11 +50,11 @@ export default class HomeScreen extends React.Component {
               onClickInvitation={this.showInvitationDetails}
             />
           </View>
-        <View style={{height: screenHeight}}>
-          <CalendarList
-            activeMonth={this.state.activeMonth}
-          />
-        </View>
+          <ScrollView style={{height: screenHeight}}>
+            <CalendarList
+              activeMonth={this.state.activeMonth}
+            />
+          </ScrollView>
         </View>
       )
     }
@@ -63,6 +63,7 @@ export default class HomeScreen extends React.Component {
 
 styles = StyleSheet.create({
   container: {
+    paddingTop: Constants.statusBarHeight,
     backgroundColor: '#FFF'
   },
   header: {
