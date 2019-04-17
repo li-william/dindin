@@ -46,6 +46,7 @@ export default class SplashScreen extends React.Component {
     }
 
     _navigateTo = (routeName) => {
+        //console.log(this.props.parent)
         this.props.parent.setState({
             screen: routeName
         });

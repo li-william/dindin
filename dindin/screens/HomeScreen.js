@@ -28,12 +28,6 @@ export default class HomeScreen extends React.Component {
       this.setState({activeMonth: MONTHS[monthIndex]})
     }
 
-    _navigateTo = (routeName) => {
-      this.props.parent.setState({
-          screen: routeName
-      });
-  }
-
     render() {
       const screenHeight = Dimensions.get('window').height
       return (

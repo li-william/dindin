@@ -40,7 +40,7 @@ export default class App extends React.Component {
         )
       }
       else if (this.state.screen == 'invitation-details') {
-        console.log("invitation")
+        console.log(this.state.details)
         return (
           <Details
             parent={this}

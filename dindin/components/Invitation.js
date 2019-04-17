@@ -15,17 +15,11 @@ export default class Invitation extends React.Component {
   constructor(props) {
     super(props)
 }
-  showInvitationDetails() {
-    this.props.parent.setState({
-      screen: "invitation-details"
-  });
-  }
 
   render() {
     props = this.props
     return (
       <View style={styles.container}>
-        <TouchableWithoutFeedback onPress={() => {showInvitationDetails()}}>
           <View style={styles.cardContent}>
               <Image
                 style={{width: 60, height: 60, marginLeft: 15, borderRadius: 30}}
@@ -36,7 +30,6 @@ export default class Invitation extends React.Component {
                 <Text style={styles.dateText}>{props.date}</Text>
               </View>
           </View>
-        </TouchableWithoutFeedback>
 
         <View
           style={{
