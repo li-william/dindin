@@ -25,6 +25,7 @@ export default class App extends React.Component {
       );
     } else {
       if (this.state.screen === "splash"){
+        console.log("splash")
         return (
           <SplashScreen 
             parent={this}
@@ -39,6 +40,7 @@ export default class App extends React.Component {
         )
       }
       else if (this.state.screen == 'invitation-details') {
+        console.log("invitation")
         return (
           <Details
             parent={this}

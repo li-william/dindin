@@ -28,10 +28,6 @@ export default class HomeScreen extends React.Component {
       this.setState({activeMonth: MONTHS[monthIndex]})
     }
 
-    showInvitationDetails() {
-      this._navigateTo("invitation-details")
-    }
-
     _navigateTo = (routeName) => {
       this.props.parent.setState({
           screen: routeName
@@ -47,7 +43,7 @@ export default class HomeScreen extends React.Component {
           />
           <View style={styles.carousel}>
             <MyCarousel
-              onClickInvitation={this.showInvitationDetails}
+              parent={this.props.parent}
             />
           </View>
           <ScrollView style={{height: screenHeight}}>

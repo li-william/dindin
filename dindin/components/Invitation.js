@@ -12,12 +12,20 @@ import {
 
 
 export default class Invitation extends React.Component {
+  constructor(props) {
+    super(props)
+}
+  showInvitationDetails() {
+    this.props.parent.setState({
+      screen: "invitation-details"
+  });
+  }
 
   render() {
     props = this.props
     return (
       <View style={styles.container}>
-        <TouchableWithoutFeedback onPress={() => {this.props.onClick()}}>
+        <TouchableWithoutFeedback onPress={() => {showInvitationDetails()}}>
           <View style={styles.cardContent}>
               <Image
                 style={{width: 60, height: 60, marginLeft: 15, borderRadius: 30}}

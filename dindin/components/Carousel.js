@@ -15,6 +15,7 @@ import Invitation from './Invitation'
 // import ENTRIES from '../assets/entries'
 import { sliderWidth, itemWidth } from '../assets/SliderEntry.style';
 
+
 const ENTRIES = [
   {
       imgurl: "https://scontent.fric1-1.fna.fbcdn.net/v/t1.0-9/46413117_2426641707353285_2661525692130263040_o.jpg?_nc_cat=101&_nc_ht=scontent.fric1-1.fna&oh=d1c16950e1ab5c871b2c4661fb568335&oe=5D0E298D",
@@ -35,11 +36,6 @@ export default class MyCarousel extends React.Component {
     this.state = {
       entries: ENTRIES
     }
-    this._showInvitationDetails = this._showInvitationDetails.bind(this)
-  }
-
-  _showInvitationDetails = () => {
-    this.props.onClickInvitation()
   }
   
   _renderItem ({item, index}) {
@@ -48,7 +44,7 @@ export default class MyCarousel extends React.Component {
           imgurl={item.imgurl}
           name={item.name}
           date={item.date}
-          onClick={this._showInvitationDetails}
+          parent={this.props.parent}
         />
     );
   }
