@@ -68,7 +68,19 @@ export default class Details extends React.Component {
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'stretch',
+        paddingTop: Constants.statusBarHeight
         }}>
+
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => {console.log("pressed")
+              this.props.parent.setState({screen: "home"})
+          }}>
+          <Image
+              style={{width: 24, height: 20, margin: 5}}
+              source={require('../assets/images/back.png')}
+          />
+        </TouchableOpacity>
         <Invitation
           name={this.state.name}
           date={this.state.date}
@@ -96,13 +108,6 @@ export default class Details extends React.Component {
             description="Your location"
           />
         </MapView>
-        <TouchableHighlight
-            style={styles.button}
-            onPress={() => {console.log("pressed")
-                this.props.parent.setState({screen: "home"})
-            }}>
-            <Text style={styles.buttonText}> Back </Text>
-        </TouchableHighlight>
       </View>
     )
   }
@@ -131,5 +136,5 @@ styles = StyleSheet.create({
     color: "#FFF",
     letterSpacing: 0.38,
     textAlign: "center",
-}
+  }
 })

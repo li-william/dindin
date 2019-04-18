@@ -12,7 +12,7 @@ import {
 import { WebBrowser } from 'expo';
 import Event from '../components/Events'
 
-const DATA = [
+var DATA = [
     {
         id: 0,
         empty: false,

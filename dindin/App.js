@@ -5,8 +5,9 @@ import AppNavigator from './navigation/AppNavigator';
 import SplashScreen from './components/SplashScreen';
 import FBScreen from './components/FBScreen';
 import HomeScreen from './screens/HomeScreen';
-import Details from './components/Details'
-import AddEvent from './components/AddEvent'
+import Details from './components/Details';
+import AddEvent from './components/AddEvent';
+import SendInvites from './components/SendInvites';
 
 export default class App extends React.Component {
   state = {
@@ -57,7 +58,15 @@ export default class App extends React.Component {
         return (
           <AddEvent
             parent={this}
-            date={"right now fucker"}
+            date={this.state.event.eventDate}
+          />
+        )
+      }
+      else if (this.state.screen == 'send-invites') {
+        return (
+          <SendInvites
+            parent={this}
+            event={this.state.event}
           />
         )
       }
