@@ -72,7 +72,6 @@ export default class Details extends React.Component {
         }}>
 
         <TouchableOpacity
-          style={styles.button}
           onPress={() => {console.log("pressed")
               this.props.parent.setState({screen: "home"})
           }}>

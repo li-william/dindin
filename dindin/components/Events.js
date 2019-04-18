@@ -22,6 +22,7 @@ export default class Event extends React.Component {
 
     render() {
         props = this.props
+        console.log(props.date)
         if (props.empty) {
             return (
                 <View style={{flex: 1, paddingHorizontal: 40}}>
@@ -38,7 +39,6 @@ export default class Event extends React.Component {
                     <View style={{flexDirection: 'row', justifyContent: 'center', marginTop: 10}}>
                         <TouchableOpacity
                             onPress={() => {
-                                console.log(this.state.parent)
                                 this.state.parent.setState({screen: "add-event", 
                                 event: {
                                     eventDate: props.date
