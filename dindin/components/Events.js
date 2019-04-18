@@ -15,6 +15,9 @@ import { WebBrowser } from 'expo';
 export default class Event extends React.Component {
     constructor(props) {
         super(props)
+        this.state = {
+            parent : this.props.parent
+        }
     }
 
     render() {
@@ -35,7 +38,8 @@ export default class Event extends React.Component {
                     <View style={{flexDirection: 'row', justifyContent: 'center', marginTop: 10}}>
                         <TouchableOpacity
                             onPress={() => {
-                                props.parent.setState({screen: "add-event"})
+                                console.log(this.state.parent)
+                                this.state.parent.setState({screen: "add-event"})
                             }}>
                             <Image
                                 style={{width: 243, height: 52, alignSelf: 'center'}}

@@ -53,6 +53,12 @@ const DATA = [
 ]
 
 export default class CalendarList extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      parent: this.props.parent
+    }
+  }
     _compareObj(a,b) {
       return parseInt(a.date.replace( /(^.+\D)(\d+)(\D.+$)/i,'$2')) - parseInt(b.date.replace( /(^.+\D)(\d+)(\D.+$)/i,'$2'));
     }
@@ -60,8 +66,6 @@ export default class CalendarList extends React.Component {
     render() {
       const filteredDATA = DATA.filter(obj => obj.date.includes(this.props.activeMonth))
       const sortedDATA = [...filteredDATA].sort(this._compareObj)
-      const parent = this.props.parent
-      console.log(parent)
       if(sortedDATA.length === 0) {
         return (
           <View>
@@ -76,16 +80,18 @@ export default class CalendarList extends React.Component {
       return (
           <ScrollView style={{flex: 1}}>
               {
-                  sortedDATA.map((item, index) => (
+                  sortedDATA.map(function(item, index) {
+                    return (
                       <Event key={item.id}
                         empty={item.empty}
                         date={item.date}
                         name={item.name}
                         time={item.time}
                         imgurl={item.imgurl}
-                        parent={parent}
+                        parent={this.state.parent}
                       />
-                  ))
+                    )
+                  }, this)
               }
           </ScrollView>
       );
