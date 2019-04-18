@@ -43,6 +43,7 @@ export default class HomeScreen extends React.Component {
           <ScrollView style={{height: screenHeight}}>
             <CalendarList
               activeMonth={this.state.activeMonth}
+              parent={this.props.parent}
             />
           </ScrollView>
         </View>

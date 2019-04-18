@@ -6,6 +6,7 @@ import SplashScreen from './components/SplashScreen';
 import FBScreen from './components/FBScreen';
 import HomeScreen from './screens/HomeScreen';
 import Details from './components/Details'
+import AddEvent from './components/AddEvent'
 
 export default class App extends React.Component {
   state = {
@@ -52,14 +53,16 @@ export default class App extends React.Component {
           />
         )
       }
+      else if (this.state.screen == 'add-event') {
+        return (
+          <AddEvent/>
+        )
+      }
       else {
         return (
-          <View style={styles.container}>
-            {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-            <HomeScreen
-              parent={this}
-            />
-          </View>
+          <HomeScreen
+            parent={this}
+          />
         );
       }
     }
