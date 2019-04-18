@@ -10,7 +10,7 @@ import {
   Button,
   Dimensions
 } from 'react-native';
-import { WebBrowser, Constants, MapView, Permissions } from 'expo';
+import { WebBrowser, Constants, MapView, Permissions, Location } from 'expo';
 import {
   Invitation
 } from './Invitation'
@@ -21,17 +21,20 @@ export default class Details extends React.Component {
     super(props)
     this.state={
       userregion: {
-        latitude: 37.78825,
-        longitude: -122.4324,
+        latitude: 38.0271194,
+        longitude: -78.5316125,
       },
-      location: {
-        latitude: 37.79825,
-        longitude: -122.4524,
-      }
+      location: null,
     }
   }
-  componentDidMount() {
+  componentWillMount() {
     this._getLocationAsync();
+    this.setState({
+      location: {
+        latitude: this.props.latitude,
+        longitude: this.props.longitude
+      }
+    })
   }
 
   _handleMapRegionChange = mapRegion => {
@@ -49,12 +52,14 @@ export default class Details extends React.Component {
     let userregion = await Location.getCurrentPositionAsync({});
     this.setState({ 
       locationResult: JSON.stringify(userregion),
-      userregion: userregion});
+      userregion: {
+        latitude: userregion.coords.latitude,
+        longitude: userregion.coords.longitude
+      }
+    });
   }
 
   render() {
-    const window = Dimensions.get('window');
-    const { width, height }  = window
     return (
         <MapView
           style={{flex: 1}}
@@ -64,6 +69,7 @@ export default class Details extends React.Component {
             latitudeDelta: 0.0922,
             longitudeDelta: 0.0421
           }}
+          onRegionChange={this._handleMapRegionChange}
         >
           <MapView.Marker
             coordinate={this.state.location}
