@@ -16,7 +16,7 @@ import Event from '../components/Events'
 import Picker from 'react-native-picker-view';
 import Geocoder from 'react-native-geocoding';
 
-Geocoder.init('X');
+Geocoder.init('AIzaSyCjUtCTg15b5_aqIFnLlFrNN0OvqP3f07c');
 
 const DATA = [
     {

@@ -44,11 +44,8 @@ var DATA = [
     },
     {
         id: 4,
-        empty: false,
+        empty: true,
         date: "Thursday, June 8th",
-        name: "Helen Lin",
-        time: "2:00 PM",
-        imgurl: "https://scontent-iad3-1.xx.fbcdn.net/v/t1.0-9/28379635_1789696051093678_1971250718972312962_n.jpg?_nc_cat=105&_nc_ht=scontent-iad3-1.xx&oh=9d39fab20de090d194d815c55547717d&oe=5D17E785"
     },
 ]
 
