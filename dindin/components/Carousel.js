@@ -56,7 +56,9 @@ export default class MyCarousel extends React.Component {
         <Invitation
           imgurl={item.imgurl}
           name={item.name}
-          date={item.date}  
+          date={item.date}
+          latitude={item.latitude}
+          longitude={item.longitude}
         />
     );
   }

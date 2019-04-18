@@ -46,6 +46,7 @@ export default class App extends React.Component {
             parent={this}
             name={this.state.details.name}
             date={this.state.details.date}
+            imgurl={this.state.details.imgurl}
             latitude={this.state.details.latitude}
             longitude={this.state.details.longitude}
           />

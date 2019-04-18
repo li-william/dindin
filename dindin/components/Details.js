@@ -7,13 +7,12 @@ import {
   Text,
   TouchableOpacity,
   View,
+  TouchableHighlight,
   Button,
   Dimensions
 } from 'react-native';
 import { WebBrowser, Constants, MapView, Permissions, Location } from 'expo';
-import {
-  Invitation
-} from './Invitation'
+import Invitation from './Invitation'
 
 export default class Details extends React.Component {
   
@@ -30,6 +29,9 @@ export default class Details extends React.Component {
   componentWillMount() {
     this._getLocationAsync();
     this.setState({
+      name: this.props.name,
+      date: this.props.date,
+      imgurl: this.props.imgurl,
       location: {
         latitude: this.props.latitude,
         longitude: this.props.longitude
@@ -61,8 +63,19 @@ export default class Details extends React.Component {
 
   render() {
     return (
+      <View style={{
+        flex: 1,
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'stretch',
+        }}>
+        <Invitation
+          name={this.state.name}
+          date={this.state.date}
+          imgurl={this.state.imgurl}
+        />
         <MapView
-          style={{flex: 1}}
+          style={{height: 500}}
           initialRegion={{
             latitude: this.state.userregion.latitude,
             longitude: this.state.userregion.longitude,
@@ -83,6 +96,14 @@ export default class Details extends React.Component {
             description="Your location"
           />
         </MapView>
+        <TouchableHighlight
+            style={styles.button}
+            onPress={() => {console.log("pressed")
+                this.props.parent.setState({screen: "home"})
+            }}>
+            <Text style={styles.buttonText}> Back </Text>
+        </TouchableHighlight>
+      </View>
     )
   }
 
@@ -94,5 +115,21 @@ styles = StyleSheet.create({
   },
   map: {
     flex: 1
-  }
+  },
+  button: {
+    alignItems: 'center',
+    backgroundColor: '#16A9FF',
+    height: 60,
+    flexDirection: 'row',
+    justifyContent: 'center'
+  },
+  buttonText: {
+    flex: 1,
+    fontFamily: "space-mono",
+    fontWeight: "bold",
+    fontSize: 18,
+    color: "#FFF",
+    letterSpacing: 0.38,
+    textAlign: "center",
+}
 })
