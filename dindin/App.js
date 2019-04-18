@@ -55,7 +55,10 @@ export default class App extends React.Component {
       }
       else if (this.state.screen == 'add-event') {
         return (
-          <AddEvent/>
+          <AddEvent
+            parent={this}
+            date={"right now fucker"}
+          />
         )
       }
       else {

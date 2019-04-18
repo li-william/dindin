@@ -39,7 +39,7 @@ export default class Event extends React.Component {
                         <TouchableOpacity
                             onPress={() => {
                                 console.log(this.state.parent)
-                                this.state.parent.setState({screen: "add-event"})
+                                this.state.parent.setState({screen: "add-event", eventDate: props.date})
                             }}>
                             <Image
                                 style={{width: 243, height: 52, alignSelf: 'center'}}
