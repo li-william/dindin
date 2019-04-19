@@ -16,7 +16,7 @@ import Event from '../components/Events'
 import Picker from 'react-native-picker-view';
 import Geocoder from 'react-native-geocoding';
 
-Geocoder.init('X');
+Geocoder.init('');
 
 const DATA = [
     {
@@ -167,7 +167,7 @@ export default class AddEvent extends React.Component {
                         selected={this.state.hourIndex}
                         style={{width:50,height:200}}
                         onSelect={(value,index) => {
-                            this.setState({hourIndex: index})
+                            this.setState({hourIndex: index, hour:value})
                         }}
                         />
                         <Picker
@@ -175,7 +175,7 @@ export default class AddEvent extends React.Component {
                         selected={this.state.minIndex}
                         style={{width:100,height:200}}
                         onSelect={(value,index) => {
-                            this.setState({minIndex: index})
+                            this.setState({minIndex: index, min: value})
                         }}
                         />
                     </View>
@@ -241,7 +241,7 @@ export default class AddEvent extends React.Component {
                                     screen: "send-invites",
                                     event: {
                                         date: this.state.eventDate,
-                                        time: "00:00",
+                                        time: this.state.hour + ":" + this.state.min,
                                         location: this.state.locationInput
                                     }
                                 })

@@ -19,20 +19,7 @@ export default class SendInvites extends React.Component {
         this.state = {
             event: this.props.event,
             selectedFriends:[],
-            DATA : [
-                {
-                    name: "Helen Lin",
-                    phone: "703-283-0193",
-                    imgurl: "https://scontent-iad3-1.xx.fbcdn.net/v/t1.0-9/28379635_1789696051093678_1971250718972312962_n.jpg?_nc_cat=105&_nc_ht=scontent-iad3-1.xx&oh=9d39fab20de090d194d815c55547717d&oe=5D17E785",
-                    checked: false
-                },
-                {
-                    name: "Kelly Xie",
-                    phone: "571-234-1924",
-                    imgurl: "https://scontent-iad3-1.xx.fbcdn.net/v/t31.0-8/25311079_10213772517779549_1373377826081783697_o.jpg?_nc_cat=104&_nc_ht=scontent-iad3-1.xx&oh=01f1fdb8bbef1b8036f62be0a4eafe4c&oe=5D0FE2DC",
-                    checked: false
-                },
-            ]
+            DATA : this.props.parent.state.contactList
         }
     }
 
@@ -53,7 +40,7 @@ export default class SendInvites extends React.Component {
             </Card>
             
             <Card>
-                <Text style={{paddingLeft: 10, fontSize: 16, fontColor: "#515853"}}>Invite Friends ({this.state.selectedFriends.length})</Text>
+                <Text style={{paddingLeft: 10, fontSize: 16, color: "#515853"}}>Invite Friends ({this.state.selectedFriends.length})</Text>
                 {this.state.DATA.map(function(data, index) {
                     return (
                         <View key={index}>
@@ -79,7 +66,11 @@ export default class SendInvites extends React.Component {
                 <TouchableOpacity
                                 style={styles.button}
                                 onPress={() => {console.log("pressed")
-                                    this._navigateTo("xd")
+                                invitedDATA = this.state.DATA.filter(obj => obj.checked==true)
+                                    this.props.parent.setState({
+                                    screen: "view-event",
+                                    invLIST: invitedDATA
+                                })
                                 }}>
                                 <Text style={styles.buttonText}> Send Invitations</Text>
                 </TouchableOpacity>
